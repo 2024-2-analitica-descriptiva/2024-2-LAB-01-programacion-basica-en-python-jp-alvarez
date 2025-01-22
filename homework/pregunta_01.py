@@ -14,3 +14,17 @@ def pregunta_01():
     214
 
     """
+
+
+    with open("files/input/data.csv", mode= "r", encoding='utf-8') as file:
+        df = file.readlines()
+    
+    df = [row.split() for row in df]
+
+    col = [int(row[1]) for row in df]
+
+    suma = sum(col)
+
+    return suma
+
+print(pregunta_01())

@@ -26,3 +26,24 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    with open("files/input/data.csv", mode= "r", encoding='utf-8') as file:
+        df = file.readlines()
+
+    df = [row.split() for row in df]
+
+    months = [row[2].split("-")[1] for row in df]
+
+    x = {}
+
+    for month in months:
+        if month in x:
+            x[month] += 1
+        else:
+            x[month] = 1
+
+    y = list(x.items())
+    y.sort()
+
+    return y 
+
+print(pregunta_04())    

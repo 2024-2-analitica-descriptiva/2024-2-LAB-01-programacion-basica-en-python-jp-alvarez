@@ -27,3 +27,26 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+    with open("files/input/data.csv", mode= "r", encoding='utf-8') as file:
+        df = file.readlines()
+
+    df = [row.split() for row in df]
+
+    x = {}
+
+    letterV = [(row[0], row[1]) for row in df]
+
+    for tuple in letterV:
+        if tuple[1] not in x:
+            x[tuple[1]] = [tuple[0]]
+        else:
+            if tuple[0] not in x[tuple[1]]:
+                x[tuple[1]].append(tuple[0])
+
+    y = [(int(key), sorted(value)) for key, value in x.items()]
+    y.sort()
+
+    return y
+
+print(pregunta_08())
+            

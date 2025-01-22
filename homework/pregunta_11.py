@@ -16,3 +16,24 @@ def pregunta_11():
 
 
     """
+    with open("files/input/data.csv", mode="r", encoding="utf-8") as file:
+        df = file.readlines()
+
+    df = [row.split() for row in df]
+
+    x = {}
+
+    letterValue = [(row[3].split(","), row[1]) for row in df]
+
+    for tuple in letterValue:
+        for letter in tuple[0]:
+            for i in letter:
+                if letter in x:
+                    x[letter] += int(tuple[1])
+                else:
+                    x[letter] = int(tuple[1])
+
+    y = dict(sorted(x.items()))
+    return y
+
+print(pregunta_11())

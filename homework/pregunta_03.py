@@ -15,3 +15,24 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+    with open("files/input/data.csv", mode= "r", encoding='utf-8') as file:
+        df = file.readlines()
+
+    df = [row.split() for row in df]
+
+    x = {}
+
+    tuplasletters = [(row[0], int(row[1])) for row in df]
+
+    for tupla in tuplasletters:
+        if tupla[0] in x:
+            x[tupla[0]] += tupla[1]
+        else:
+            x[tupla[0]] = tupla[1]
+
+    y = list(x.items())
+    y.sort()
+
+    return y
+
+print(pregunta_03())

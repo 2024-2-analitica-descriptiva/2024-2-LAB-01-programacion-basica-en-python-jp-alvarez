@@ -20,3 +20,14 @@ def pregunta_10():
 
 
     """
+    with open("files/input/data.csv", mode="r", encoding="utf-8") as file:
+        df = file.readlines()
+    
+    df = [row.split() for row in df]
+
+    y = [(row[0], len(row[3].split(",")), len(row[4].split(","))) for row in df]
+
+    return y
+
+print(pregunta_10())
+
